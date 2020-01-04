@@ -1,0 +1,84 @@
+
+ \section{El juego de Wythoff}
+ \textit{El objetivo de la clase de hoy ser\'a resolver el siguiente problema:}
+ \begin{ej}
+ 
+Dos jugadores juegan alternadamente retirando piedras de dos pilas sobre una mesa.
+Dentro de su turno el jugador puede, ya sea remover una cantidad cualquiera de piedras de una pila o remover la misma cantidad de piedras de ambas pilas. Gana el jugador que retire la \'ultima piedra. Determine todas las posiciones perdedoras.    
+ \end{ej}
+
+
+\textit{Una buena estrategia para identificar las posiciones perdedoras en este juego es asociar el movimiento de los jugadores al movimiento de una pieza en un tablero. Suponga que inicialmente las dos pilas poseen 5 y 7 piedras. Colocaremos una pieza sobre la esquina superior derecha en un tablero de $8\times6$. El movimiento de retirar $x$ piedras de la columna de 5 ser\'a interpretado como un desplazamiento de $x$ casillas hacia abajo, mientras que la misma jugada sobre la otra pila ser\'a interpretado como un desplazamiento horizontal hacia la izquierda de la misma magnitud. Una jugada en la cual se retire $x$ piedras de ambas pilas se interpreta como un desplazamiento descendiente en diagonal desde la derecha hacia la izquierda de esa misma cantidad de casillas. El juego termina cuando la pieza llegue a la casilla de la esquina inferior izquierda simbolizando que ambas pilas est\'an con 0 piedras.}
+\begin{center}
+	\begin{tabular}{|p{0.01in}| p{0.01in}| p{0.01in}|p{0.01in}| p{0.01in}| p{0.01in}|p{0.01in}| p{0.01in}|} 
+		\hline
+	 \cellcolor[HTML]{6F6765}&\cellcolor[HTML]{6F6765}&\cellcolor[HTML]{6F6765}&\cellcolor[HTML]{6F6765}&\cellcolor[HTML]{6F6765}&\cellcolor[HTML]{6F6765}&\cellcolor[HTML]{6F6765}& \cellcolor[HTML]{1D1919} \\
+		%[0.5ex] this optional argument modifies de height of row 
+		\hline
+	    &  &  &  &  &  &\cellcolor[HTML]{6F6765}&\cellcolor[HTML]{6F6765}  \\[0.5ex]
+		\hline
+		&  &  &  &  &\cellcolor[HTML]{6F6765}&  &\cellcolor[HTML]{6F6765}  \\[0.5ex]
+		\hline
+		&  &  &  &\cellcolor[HTML]{6F6765}&  &  &\cellcolor[HTML]{6F6765}  \\[0.5ex]
+		\hline
+		&  &  &\cellcolor[HTML]{6F6765}&  &  &  &\cellcolor[HTML]{6F6765}  \\[0.5ex]
+		\hline
+		&  &\cellcolor[HTML]{6F6765}&  &  &  &  &\cellcolor[HTML]{6F6765}  \\[0.5ex]
+		\hline
+\end{tabular}
+\end{center}
+
+\textit{La posici\'on $(0,0)$ es perdedora porque una vez un lo reciba en su turno ya no tendr\'a piezas que mover. Cualquier posici\'on del tipo $(x,0),(0,x)$ o $(x,x)$, con $x>0$, es una posici\'on ganadora. Marquemos esas posiciones en el tablero:}
+	\begin{center}
+	\begin{tabular}{|p{0.01in}| p{0.01in}| p{0.01in}|p{0.01in}| p{0.01in}| p{0.01in}|p{0.01in}| p{0.01in}| } 
+	\hline
+	+ &  &  &  &  & + &  &  \\[0.5ex]
+	\hline
+	+ &  &  &  & + &  &  &  \\[0.5ex]
+	\hline
+	+&  &  & + &  &  &  &  \\[0.5ex]
+	\hline
+	+ &  & + &  &  &  &  &  \\[0.5ex]
+	\hline
+	+ & + &  &  &  &  &  &  \\[0.5ex]
+	\hline
+	$-$ & + & + & + & + & + & + & + \\[0.5ex]
+	\hline
+    \end{tabular}
+	\end{center}
+
+	\textit{Las pr\'oximas posiciones perdedoras que encontramos son $(1,2),(2,1)$. A partir de esas casillas, podemos ubicar nuevas posiciones vencedoras.} 
+	
+	\begin{center}
+		\begin{tabular}{|p{0.01in}| p{0.01in}| p{0.01in}|p{0.01in}| p{0.01in}| p{0.01in}|p{0.01in}| p{0.01in}| } 
+			\hline
+			+ & + & + &  & + & + & + &  \\[0.5ex]
+			\hline
+			+ & + & + & + & + & + &  &  \\[0.5ex]
+			\hline
+			+ & + & + & + & + &  &  &  \\[0.5ex]
+			\hline
+			+ & $-$ & + & + & + & + & + & + \\[0.5ex]
+			\hline
+			+ & + & $-$ & + & + & + & + & + \\[0.5ex]
+			\hline
+			$-$ & + & + & + & + & + & + & + \\[0.5ex]
+			\hline
+		\end{tabular}
+	\end{center}
+
+\textit{Las siguientes posiciones perdedoras que encontraremos son $(3,5)$ y $(5,3)$. Como existe simetr\'ia entre las dos pilas, basta buscar las posiciones perdedoras $(x,y)$ con $x<y$. Repetiendo el proceso anterior, podemos listar las primeras posiciones perdedoras ordenadas $(x_{n},y_{n})$	con $x_{n}\leq y_{n}$.}
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|} 
+		\hline
+		$n$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+		\hline
+		$x_{n}$ & 0 & 1 & 3 & 4 & 6 & 8 & 9 & 11 & 12 & 14 & 16 & 17 & 19 \\
+		\hline
+		$y_{n}$ & 0 & 2 & 5 & 7 & 10 & 13 & 15 & 18 & 20 & 23 & 26 & 28 & 31 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\textit{Las pr\'oximas secciones nos ayudar\'an a establecer alg\'un patr\'on entre los valores de $x_{n}$ e $y_{n}$ en funci\'on a $n$.}

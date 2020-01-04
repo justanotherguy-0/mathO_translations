@@ -1,0 +1,220 @@
+\section{Definici\'on y Propiedades}
+	\begin{df}
+	La funci\'on piso de un n\'umero real $x$ es el mayor entero $\lfloor x \rfloor$ que no es mayor a $x$. Definimos la parte fraccionaria \{$x$\} de $x$ por $\{x\}=x-\lfloor x \rfloor$. (ejemplos: $\lfloor3\rfloor=3,  \lfloor3.5\rfloor=3$ y  $\lfloor-4.7\rfloor=-5$).	
+	\end{df}
+	\begin{thm}
+		Sean x e y n\'umeros reales. Entonces:
+		\begin{enumerate}
+			\item $\lfloor x \rfloor \leq x \leq \lfloor x \rfloor +1$.\label{x1}
+			\item $\lfloor x+m \rfloor = \lfloor x \rfloor +m$ si m es entero.\label{x2}
+			\item $\lfloor x \rfloor + \lfloor y \rfloor \leq \lfloor x+y \rfloor \leq  \lfloor x \rfloor + \lfloor y \rfloor +1$ \label{x3}
+			\item $\Bigl\lfloor \frac{\lfloor x \rfloor}{m} \Bigr\rfloor = \Bigl\lfloor \frac{x}{m} \Bigr\rfloor$ si m es entero positivo\label{x4}
+			\item Si n y a son enteros positivos, $\Bigl\lfloor \frac{n}{a} \Bigr\rfloor$ es el n\'umero de enteros entre $1,2,3 \textellipsis n$ que son divisibles por a.\label{x5}
+		\end{enumerate}
+		Demostraci\'on. Los primeros dos items se siguen de forma casi inmediata de la defici\'on y ser\'an dejados a cargo del lector.
+		\\
+		\\
+		Para probar (\ref{x3}), note que:
+		
+		\begin{align*}
+		\lfloor x \rfloor + \lfloor y \rfloor &\leq \lfloor x \rfloor + \lfloor y \rfloor + \lfloor \{x\} + \{y\} \rfloor \\
+		&=\bigl\lfloor\lfloor x \rfloor + \lfloor y \rfloor +\{x\}+\{y\}  \bigr\rfloor \\
+		&=\lfloor x \rfloor + \lfloor y \rfloor    
+		\end{align*}
+		Como $\{x\} + \{y\} < 2, \lfloor \{x\}+\{y\} \rfloor \leq 1$ se sigue:
+		\begin{align*}
+		\lfloor x + y \rfloor &= \lfloor x \rfloor + \lfloor y \rfloor + \lfloor \{x\} + \{y\} \rfloor \\
+		& \leq \lfloor x \rfloor +	\lfloor y \rfloor +1.
+		\end{align*} 
+		
+		Para probar (\ref{x4}), sea $\lfloor x \rfloor = qm +r$ con $0 \leq r<m-1$, entonces: 
+		\begin{align*}
+		\Bigl\lfloor \frac{\lfloor x \rfloor}{m}\Bigr\rfloor = \Bigl\lfloor\ q+ \frac{r}{m} \Bigr\rfloor.  
+		\end{align*}
+		
+		Como $0 \leq \{x\} < 1$,
+		\begin{align*}
+		q = q + \Bigl\lfloor\frac{r + \{x\}}{m} \Bigr\rfloor = \Bigl\lfloor\frac{qm + r +\{x\}}{m}\Bigr\rfloor = \Bigl\lfloor\frac{x}{m} \Bigr\rfloor. 
+		\end{align*} 
+		
+		Finalmente, para probar (\ref{x5}), sean $a,2a,\textellipsis,ja$ todos los enteros divisibles entre $a$. Entonces,
+		\begin{align*}
+		ja \leq n < (j+1)a &\Leftrightarrow j \leq \frac{n}{a} < j + 1\\
+		&\Leftrightarrow j = \Bigl\lfloor\frac{n}{a}\Bigr\rfloor. 
+		\end{align*}
+		
+		\begin{obs}
+			En algunos problemas de esta secci\'on ser\'a usado la notaci\'on de sumatoria. Se recomienda que el profesor escriba en forma extendida las primeras sumatorias hasta que los alumnos se sientan confortables con la manipulacion por \'indices.
+		\end{obs}	
+	\end{thm}
+
+	
+	
+	\begin{thm}[F\'ormula de Polinac]\label{tp}
+		Sea p un primo. Entonces el mayor exponente en la factoraci\'on de n! es:
+		$$t_{p}(n) = \sum_{i=1}^{\infty}  \bigg\lfloor\dfrac{n}{p^i}\biggr\rfloor$$.
+	\end{thm}
+	\textit{Demostraci\'on.} ¿Qu\'e significa $\bigg\lfloor\dfrac{n}{p^i}\biggr\rfloor$? Este cuenta la cantidad de enteros positivos menores o iguales a $n$ divisibles entre $p^{i}$. Cada m\'ultiplo de p contribuye con un exponente a $p$ en $n!$, cada m\'ultiplo de $p^{2}$ contribuye con dos exponentes para $p$ en $n!$ y as\'i sucesivamente. Entonces $\displaystyle\sum_{i = 1}^{\infty} \biggl\lfloor\frac{n}{p^{i}}\biggr\rfloor$ es la suma de todas las contribuciones (note que un m\'ultiplo de $p^{i}$ es contado $i$ veces en $\left(\Bigl\lfloor\tfrac{n}{p}\Bigr\rfloor, \Bigl\lfloor\tfrac{n}{p^2}\Bigr\rfloor,\textellipsis,\Bigl\lfloor\tfrac{n}{p^i}\Bigr\rfloor\right)$ 
+	\begin{nt}
+		Escr\'ibase $p^{\alpha} \Vert n$ si p es primo y $p^{\alpha}$ es la mayor potencia de p que divide a n. 
+	\end{nt}
+	
+	\begin{ej}
+		¿En cuantos ceros termina la representaci\'on decimal de 1000!?\\
+		
+		Para determinar el n\'umero de ceros, basta de determinar la mayor potencia de 10 que divide a 1000!. Existen m\'as factores de 2 que factores de 5, por ende solo ser\'a necesario encontrar el mayor exponente de 5 en la factoraci\'on de 1000!. Por la f\'ormula de Polinac, tal n\'umero es: 
+		$$\sum_{i = 1}^{\infty} \biggl\lfloor\frac{1000}{5^{i}}\biggr\rfloor = 200 + 40 + 8 + 1 = 249.$$
+	\end{ej}
+	\begin{ej}
+		Muestre que $\displaystyle\sum_{i = 0}^{k - 1}\biggl\lfloor x + \frac{i}{k}\biggr\rfloor = \lfloor kx \rfloor.$\\
+		Basta mostrar que $\displaystyle\sum_{i = 0}^{k - 1}\biggl\lfloor \{x\} + \frac{i}{k}\biggr\rfloor = \lfloor k\{x\} \rfloor$\\ \\
+		Sea $a = \{x\} \text{ y } j \in \{1,2,\textellipsis, k-1\}$ tal que $k \leq j + ka < k + 1.$ Se sigue que $\lfloor ka \rfloor = k - j$. Adem\'as de eso $\biggl\lfloor a + \frac{i}{k}\biggr\rfloor = 0$ si $i < j$ y $\biggl\lfloor a + \frac{i}{k}\biggr\rfloor = 1$ si $j < i$. De ah\'i
+		\begin{align*}
+			\sum_{i = 0}^{k - 1}\biggl\lfloor a + \frac{i}{k}\biggr\rfloor &= \sum_{i = j}^{k - 1}\biggl\lfloor a + \frac{i}{k}\biggr\rfloor \\
+			&= k - j \\
+			&= \lfloor ka \rfloor		
+		\end{align*}		 		
+	\end{ej}
+	\begin{ej}
+		Muestre que $\lfloor x + y \rfloor + \lfloor x \rfloor + \lfloor y \rfloor \leq \lfloor 2x \rfloor + \lfloor 2y \rfloor$\\
+		
+		Sea $a = \{x\} \text{ y } b = \{y\}$. La desigualdad es equivalente a 
+		$$2\lfloor x \rfloor + 2\lfloor y \rfloor + \lfloor a \rfloor + \lfloor b \rfloor + \lfloor a + b \rfloor \leq 2\lfloor x \rfloor + 2\lfloor y \rfloor + \lfloor 2a \rfloor + \lfloor 2b \rfloor$$
+		que puede ser reescrita como
+		$$\lfloor a \rfloor + \lfloor b \rfloor + \lfloor a + b \rfloor \leq \lfloor 2a \rfloor + \lfloor 2b \rfloor$$
+		Tenemos que $0 \leq \lfloor a \rfloor + \lfloor b \rfloor \leq 1$ y $\lfloor a \rfloor = \lfloor b \rfloor = 0$. Si $\lfloor a+ b \rfloor = 1$ se sigue que de entre $a$ y $b$ al menos uno es mayor o igual a $1/2$. De ah\'i
+		$$\lfloor a \rfloor + \lfloor b \rfloor + \lfloor a + b \rfloor = 1 \leq \lfloor 2a \rfloor + \lfloor 2b \rfloor$$
+		Caso contrario $\lfloor a \rfloor + \lfloor b \rfloor + \lfloor a + b \rfloor = 0$ y la desigualdad se mantiene.
+	\end{ej}
+	\begin{ej}
+
+		Muestre que si $n,m \in \Z^{+}$, entonces $\dfrac{(2m)!(2n!)}{m!n!(m + n)!}\in\Z^{+}$
+		
+		Por el teorema anterior, basta mostrar que:
+		$$\bigg\lfloor\frac{2m}{p^{k}}\bigg\rfloor + \bigg\lfloor\frac{2n}{p^{k}}\bigg\rfloor \geq \biggl\lfloor\frac{m}{p^{k}}\bigg\rfloor + \bigg\lfloor\frac{n}{p^{k}}\bigg\rfloor + \bigg\lfloor\frac{m + n}{p^{k}}\bigg\rfloor,$$ para todo primo $p$ y todo entero positivo $k$. La desigualdad es verdadera por el ejemplo anterior.
+	\end{ej}
+	\begin{ej}
+		Pruebe que $\binom{2n}{n}$ divide a MCM$(1,2,\cdots,2n)$\\
+		
+		Sea p un primo. Si $p^{\alpha} \Vert \binom{2n}{n} \text{ y } p^{\beta} \leq p^{\beta + 1},$ por el teorema anterior, tenemos:
+		\begin{align*}
+			\alpha &= \sum_{l=1}^{\infty} \biggl\lfloor\frac{2n}{p^{l}}\biggr\rfloor - 2\bigg\lfloor\frac{n}{p^{j}}\biggr\rfloor\\
+			&= \sum_{l=1}^{\beta} \biggl\lfloor\frac{2n}{p^{l}}\biggr\rfloor - 2\bigg\lfloor\frac{n}{p^{j}}\biggr\rfloor\\
+			&\leq \beta,
+		\end{align*}
+		ya que $\lfloor 2x \rfloor - 2\lfloor x \rfloor \in \{0,1\}$. Como p $\Vert$ $MCM(1,2,\cdots,2n) \text{ y } \alpha \leq \beta$, se sigue el resultado.
+	\end{ej}
+	\begin{ej}
+		Muestre que 
+		$$\sum_{k=1}^{\infty} \biggr\lfloor \frac{n}{2^{k}} + \frac{1}{2} \biggr\rfloor = n$$
+		 El n\'umero de enteros que son m\'ultiplos de $2^{k}$, mas no de $2^{k + 1}$ es \\
+		 $\lfloor {n}/{2^{k}} \rfloor - \big\lfloor{n}/{2^{k + 1}} \rfloor$. Para $x \in [0,1)$ es verdad que $\lfloor 2x \rfloor = \lfloor x + 1/2 \rfloor$. Sea $n = 2^{k + 1}q + r$, se sigue:
+		 \begin{align*}
+		 	\lfloor {n}/{2^{k}} \rfloor - \big\lfloor{n}/{2^{k + 1}} \rfloor &= \lfloor {2^{k+1}q + r}/{2^{k}} \rfloor - \big\lfloor{2^{k+1}q + r}/{2^{k + 1}} \rfloor\\
+		 	&= q + \lfloor r/2^{k} \rfloor\\
+		 	&= q + \lfloor r/2^{k + 1} + 1/2 \rfloor\\
+		 	&= \lfloor n/2^{k+1} + 1/2 \rfloor.
+		 \end{align*}
+		 As\'i,
+		 $$\sum_{k = 1}^{\infty} \biggr\lfloor \frac{n}{2^{k}} + \frac{1}{2} \biggr\rfloor = \sum_{k = 0}^{\infty} \biggr\lfloor \frac{n}{2^{k}} \biggr\rfloor - \biggr\lfloor \frac{n}{2^{k + 1}}  \biggr\rfloor = n.$$		
+	\end{ej}
+	\begin{thm}
+		Sea $v_{p}(n)$ la suma de los d\'igitos de la representaci\'on de $n$ en la base $p$ con $p$ primo. Muestre que el exponente de $p$ en la factoraci\'on en primos de $n!$ es $\dfrac{n-v_{p}(n)}{p-1}.$\\ 
+		
+		Considere la representaci\'on de $n$ en la base $p$, $n = \displaystyle\sum_{i = 0}^{k} a_{i}p^{i}$ donde $0 \leq a_{i} < p$. Sea $\alpha$ el exponente de $p$ en la factoraci\'on en primos de $n!$, tenemos que $\alpha$ es igual a la suma de: \\
+		\begin{align*}
+			\Biggl\lfloor \frac{n}{p} \Biggr\rfloor &= a_{k}p^{k - 1} + a_{k - 1}p^{k - 2} + \cdots + a_{1}\\
+			\Biggl\lfloor \frac{n}{p^{2}} \Biggr\rfloor &=  a_{k}p^{k - 2} + a_{k - 1}p^{k - 3} + \cdots + a_{2}\\
+			&\vdots\\
+			\Biggl\lfloor \frac{n}{p^{k}} \Biggr\rfloor &= a_{k}
+		\end{align*}
+		Luego,  
+		
+		\begin{align*}
+			\alpha &= a_{k}(p^{k-1} + \cdots + p + 1) + \cdots + a_{3}(p^{2} + p +1) + a_{2}(p + 1) + a_{1} \\
+			&= \frac{1}{p-1} \left\{a_{k}(p^{k} - 1) + \cdots + a_{2}(p^{2} - 1) + a_{1}(p - 1)\right\} \\
+			&= n-v_{p}(n). 
+		\end{align*}		
+	\end{thm}
+	\begin{ej}
+		Sea B(m) el conjunto de enteros $r$ tal que  $2^{r}$ es un t\'ermino en la representaci\'on binaria de $n$. Por ejemplo, B$(18) = \{4,1\}$ pues $18 = 2^{4} + 2^{1}$. Pruebe que $\binom{n}{k}$ es impar si, y solamente si, B$(k) \subseteq B(n)$
+		
+		Reutilizando la notaci\'on de los dos teoremas anteriores, $t_{2}(n) = n- v_{2}(n)$. As\'i,
+		\begin{align*}
+			\binom{n}{k} \equiv 1 \Mod{2} &\Leftrightarrow [n - v_{2}(n)] - [(k - v_{2}{k}) + ((n - k) - v_{2}(n - k))] = 0\\
+			 &\Leftrightarrow v_{2}(n) =  v_{2}(n - k) + v_{2}{k}.
+		\end{align*}
+		La \'ultima equaci\'on nos muestra que en la sustracci\'on en base 2 no se produce ning\'un ``acarreo", por lo tanto $B(k) \subseteq B(n)$  
+	\end{ej}
+	\begin{obs}
+			El ejemplo anterior tambi\'en muestra que $\dbinom{n}{k} \equiv 0 \Mod{2}$, para $1 \leq k < n$ si, y solamente si, n es una potencia de $2$
+	\end{obs}
+	\begin{ej}[Ol\'impiada Rioplatense]
+		Sea $r$ un real tal que: 
+		$$\biggl\lfloor r + \frac{19}{100} \biggr\rfloor + \biggl\lfloor r + \frac{20}{100} \biggr\rfloor + \cdots + \biggl\lfloor r + \frac{92}{100} \biggr\rfloor = 554.$$
+		Calcule $100r.$\\
+		
+		Fijemos $a= \lfloor r \rfloor$ y $b = \{r\}$. La igualdad se puede reescribir como:
+		$$74a + \sum_{i = 0}^{73} \biggl\lfloor b + \frac{19 + i}{100} \biggr\rfloor = 554$$
+		Como $0 \leq \biggl\lfloor b + \frac{19 + i}{99} \biggr\rfloor < 2$ para todo $i \in \{0,1,2,\cdots,73\}$, se sigue que $74a \leq 554 \leq 74a +74.$ No puede ser que $74(a + 1) = 554$ ya que $74 \nmid 554$. Luego $a = \biggl\lfloor 554/74 \biggr\rfloor = 7.$ Se sigue:
+		$$\sum_{i = 0}^{73} \biggl\lfloor b + \frac{19 + i}{100} \biggr\rfloor = 554 - 7 \cdot 74 = 36.$$
+		Por otro lado, 
+		$$ \sum_{i = 0}^{99} \biggl\lfloor b + \frac{i}{100} \biggr\rfloor = j$$
+		donde $\dfrac{j}{100} \leq 100b < \dfrac{j+1}{100}$. Notemos que para $i \leq 19$, $b + \frac{i}{100} < 1$. Como $\biggl\lfloor b + \frac{i}{100} \biggr\rfloor = 1$ si $100 -j \leq i \leq 99$, tenemos:
+		\begin{align*}
+			\lfloor 100b \rfloor &= j \\
+			&=  \sum_{i = 0}^{99} \biggl\lfloor b + \frac{i}{100} \biggr\rfloor \\
+			&= \sum_{i = 20}^{92} \biggl\lfloor b + \frac{i}{100} \biggr\rfloor + \sum_{i = 93}^{99} \biggl\lfloor b + \frac{i}{100} \biggr\rfloor \\
+			&= 36 + 7 \\
+			&= 43
+		\end{align*}
+		Finalmente, 
+		$$ \lfloor 100r \rfloor = 100a + \lfloor 100b \rfloor = 700 + 43 = 743.$$
+	\end{ej}
+	\begin{ej}
+		Pruebe que existe un natural $n$ tal que la representaci\'on decimal de $n^{2}$ (de izquierda a derecha) comieza  con el n\'umero $201120112011\cdots2011$ ($2011$ veces).\\
+		
+		Podemos probar que existe $n$ tal que $n^{2}$ para cualquier secuencia de n\'umeros $c_{1}c_{2} \cdots c_{r}$. Tome alg\'un $k$ suficientemente grande tal que $2\sqrt{m}<2^{k-1}$.
+		Sea\\ 
+		$n = \lfloor10^{k}\sqrt{m} + 1 \rfloor$. Luego,
+		\begin{align*}
+			10^{k}\sqrt{m}< n \leq 10^{k}\sqrt{m} + 1 &\Rightarrow \\
+			10^{2k}m< n^{2} \leq 10^{2k}m + 2 \cdot 10^{k}\sqrt{m} + 1 &\Rightarrow\\
+			10^{2k}m< n^{2} < 10^{2k}m + 10^{2k - 1} + 1 &\Rightarrow\\
+			10^{2k}m< n^{2} < 10^{2k}(m + 1).
+		\end{align*}
+	\end{ej}
+	\begin{ej}[OBM 1999]
+		Pruebe que existe por lo menos un d\'igito diferente de cero entre la 1000000-avo y la 3000000-avo lugar decimal de $\sqrt{2}$ despu\'es de la coma.\\
+		
+		Suponga que no, entonces $10^{2 \cdot 10^{6}} \lfloor 10^{10^{6}}\sqrt{2} \rfloor$. Sea $k = \lfloor 10^{10^{6}} \sqrt{2} \rfloor$, tenemos:
+		\begin{align*}
+			10^{2\cdot 10^{6}}k < 10^{3\cdot 10^{6}}\sqrt{2} < 10^{2\cdot 10^{6}}k &\Rightarrow\\
+			\dfrac{k}{10^{10^{6}}} < \sqrt{2} < \dfrac{k}{10^{10^{6}}} + \dfrac{1}{10^{3\cdot 10^{6}}} &\Rightarrow\\
+			\dfrac{k^{2}}{10^{2\cdot 10^{6}}} < 2 < \dfrac{k^{2}}{10^{2\cdot 10^{6}}} + \dfrac{2k}{10^{4 \cdot 10^{6}}} + \dfrac{1}{10^{6\cdot 10^{6}}}.
+		\end{align*}
+		Como $\dfrac{2k}{10^{2\cdot 10^{10^{6}}}} < \dfrac{2\cdot 10^{10^{6}}\sqrt{2}} {10^{2\cdot 10^{6}}} < \dfrac{1}{2},$ tenemos que
+		$$k^{2} < 2\cdot 10 ^{2\cdot 10^{6}} < k^{2} + 1.$$
+		Esto es un absurdo ya que $2\cdot 10^{2\cdot 10^{10^{6}}} \in \Z.$ 
+	\end{ej}
+	\begin{ej}[Secuencia de Beatty]
+		Si $\alpha$ y $\beta$ son irracionales satisfaciendo $\frac{1}{\alpha} + \frac{1}{\beta} = 1$, entonces las secuencias
+		$$\lfloor \alpha \rfloor, \lfloor 2\alpha \rfloor, \lfloor 3\alpha \rfloor, \cdots;$$
+		y
+		$$\lfloor \beta \rfloor, \lfloor 2\beta \rfloor, \lfloor 3\beta \rfloor, \cdots;$$
+		incluyen todos los naturales exactamente una vez.\\
+		
+		Primeramente, provemos la unicidad. Suponga que $\lfloor k\alpha \rfloor = \lfloor l\beta \rfloor = n$, como $\alpha$ y $\beta$ son irracionales tal que $n < k\alpha < n + 1$ y $n < l\beta < n+1,$ se sigue:
+		$$\dfrac{k + l}{n+1} < \dfrac{1}{\alpha} + \dfrac{1}{\beta} < \dfrac{k + l}{n}.$$
+		Esto es $\dfrac{k + l}{n+1} < 1 < \dfrac{k + l}{n},$ lo cual es un absurdo ya que nos dice que $k + l$ est\'a entre dos enteros consecutivos.\\
+		
+		Mostremos ahora que todo natural aparece en las secuencias. Dado $n \in \N$, existe $k \in \Z^{+}$ tal que
+		$$\dfrac{k - 1}{n} < \dfrac{1}{\alpha} < \dfrac{k}{n}.$$
+		Dividamos el intervalo $[k/(n+1), k/n]$ en dos partes. Si $\dfrac{k-1}{n} < \dfrac{1}{\alpha} < \dfrac{k}{n}$, tenemos $\lfloor k\alpha \rfloor = n.$ Si por otro lado, $\dfrac{k - 1}{n} < \dfrac{1}{\alpha} < \dfrac{k}{n + 1},$ tenemos: 
+		\begin{align*}
+			\dfrac{k - 1}{n} < 1 - \dfrac{1}{\beta} < \dfrac{k}{n + 1} &\Rightarrow\\
+			\dfrac{n + 1 - k}{n + 1} < \dfrac{1}{\beta} < \dfrac{n + 1 -k}{n} &\Rightarrow\\
+			\lfloor (n + 1 - k)\beta\rfloor = n.\\
+		\end{align*}
+		En cualquiera de los casos, $n$ forma parte de la secuencia.
+	\end{ej}

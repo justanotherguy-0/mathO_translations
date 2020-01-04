@@ -1,0 +1,27 @@
+\section{La soluci\'on del problema original}
+\textit{Volvamos al ejemplo inicial. Note que toda fila o columna del tablero debe poseer como m\'aximo una posici\'on perdedora. Si la k-\'esima columna no posee ninguna posici\'on perdedora, para cada una de sus casillas existe una casilla perdedora sobre la misma fila o diagonal y eso implicar\'ia la existencia de una infinidad de casillas perdedoras entre las $k - 1$ primeras columnas. El mismo argumento se aplica a las filas. Consecuentemente, cada natural aparece exactamente una vez entre los terminos de la secuencia $x_{0},x_{1},\cdots;y_{0},y_{1}.$ Adem\'as de eso es f\'acil concluir que las secuencias $(x_{n})$ e $(y_{n})$ son crecientes. Inducidos por el ejemplo anterior, eso nos lleva a conjecturar la existencia de dos irracionales $\alpha$ y $\beta$ que pasan de alguna forma a generar los t\'erminos de las posiciones perdedoras.\\
+\\	
+La inserci\'on de los puntos $(x_{n}, y_{n})$ en un gr\'afico sugiere que esos puntos est\'an pr\'oximos a una recta. Eso podr\'ia ser traducido diciendo que el cociente $y_{n}/x_{n}$ es pr\'oximo a alg\'un valor. De facto, si $\alpha = \dfrac{1 + \sqrt{5}}{2}$, $x_{n} \approx \alpha n$ e $y_{n} \approx \alpha (n + 1).$ Como las posiciones son n\'umeros enteros podemos conjeturar que:}
+\begin{cnj}
+	Sea $\alpha = \dfrac{1 + \sqrt{5}}{2},$ entonces $(x_{n}, y_{n}) = (\lfloor n \cdot \alpha \rfloor, \lfloor n \cdot (\alpha + 1)\rfloor)$
+	
+	Note que $\alpha$ es irracional y que:
+	\begin{align*}
+		\dfrac{1}{\alpha} + \dfrac{1}{\alpha + 1} &= \dfrac{2\alpha + 1}{\alpha^{2} + \alpha}\\
+		&= \dfrac{2\alpha + 1}{2\alpha + 1}\\
+		&= 1
+	\end{align*}
+	Probemos la afirmaci\'on anterior por inducci\'on. Los casos iniciales presentados en la tabla inicial son f\'acilmente verificables. Suponga su validez para los enteros en el conjunto $\{0,1,2,3,\cdots,k\}$. Probemos que tambi\'en es v\'alido para $k + 1$. Sea $t$ el menor natural que no est\'a en el conjunto $\{x_{0},x_{1},\cdots,x_{k},y_{0},y_{1},\cdots,y_{k}\}$. Como las secuencias  $x_{n}$ e $y_{n}$ son crecientes y $x_{n} < y_{n}$, si $x_{k + 1} \ne t$, el entero $t$ no aparecer\'a entre los t\'erminos de las secuencias lo cual contradice nuestra observaci\'on inicial. En virtud de la unicidad de representaci\'on de las secuencias de Beatty, el entero $\lfloor \alpha(k + 1)\rfloor$ a\'un no apareci\'o entre los t\'erminos de las $k$ primeras posiciones perdedoras. Si $t < \lfloor \alpha(k + 1) \rfloor$, como $x_{n}$ es creciente, debe existir $j$ tal que $\lfloor(\alpha + 1)j \rfloor = t$ con $j > k$. En ese caso,
+	\begin{align*}
+		t &= \lfloor(\alpha + 1)j \rfloor\\
+		&\geq \lfloor(\alpha +1)(k + 1)\rfloor\\
+		&= \lfloor \alpha(k + 1)\rfloor + k + 1\\
+		&> \lfloor \alpha(k + 1) \rfloor,
+	\end{align*}  
+	lo que contradice la supusici\'on inicial sobre $t$. Luego, debemos tener que $x_{k + 1} = \lfloor\alpha(k + 1)\rfloor.$ Sea $l = y_{k + 1} - x_{k + 1}$. Si 
+	$l < k + 1$, el movimiento diagonal 
+	$$(x_{k + 1},y_{k + 1}) \rightarrow (x_{l},y_{k + 1} - x_{k + 1} + x_{l}) = (x_{l}, y_{l})$$,
+	\end{cnj} 
+	pasa una posici\'on perdedora contradiciendo el hecho de que $(x_{k + 1},y_{k + 1})$ era una posici\'on perdedora. Si $l > k + 1$, $y_{k + 1} > \lfloor(\alpha + 1)(k + 1) \rfloor$ y el jugador en aquella posici\'on puede remover piedras de solo una pila obteniendo:
+	$$(x_{k + 1},y_{k + 1}) \rightarrow (\lfloor \alpha(k + 1)\rfloor,\lfloor(\alpha + 1)(k + 1)\rfloor).$$
+	 Usando nuevamente la hip\'otesis de inducci\'on y recordando que $y_{i} - x_{i} \ne k + 1$ para todo $i \in \{0,1,\cdots,k\}$, cualquier movimiento del pr\'oximo jugador, conducir\'a a una posici\'on en la que exactamente una de las pilas posee un n\'umero de piedras igual a uno de los n\'umeros $x_{0}, y_{0},\cdots,x_{k},y{k}$. As\'i, el oponente podr\'a pasar nuevamente a una posici\'on perdedora. Nuevamente tenemos un absurdo pues $(x_{k + 1},y_{k + 1}).$ Luego, $y_{k + 1} - x_{k + 1} = k + 1$ y consecuentemente $y_{k + 1} = \lfloor(\alpha + 1)(k + 1)\rfloor$ concluyendo la prueba de la conjetura para $k + 1.$
